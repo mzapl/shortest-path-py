@@ -11,8 +11,17 @@ def getdiagonals(diagonals, height = len(tablica)):
     if mymax + 1< height:
         diagonals.append(mymax + 1)
 
+my_arr = []
 for startingpoint in range(len(tablica)):
     diagonals = [startingpoint]
+    my_arr.append([[startingpoint]])
     for column in range(len(tablica[0])):
-        print(diagonals)
         getdiagonals(diagonals)
+        my_arr[-1].append(diagonals[::])
+
+for x in my_arr:
+    print(x)
+
+import itertools
+z = [i for j in range(len(my_arr)) for i in itertools.product(*my_arr[j])]
+print(len(z))
